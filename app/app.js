@@ -1,4 +1,4 @@
-nv = new Ext.Application({
+va = new Ext.Application({
     launch: function() {
 
         this.data = {};
@@ -26,8 +26,8 @@ nv = new Ext.Application({
         });
 
         ['hotels', 'bars', 'restaurants'].forEach( function (type) {
-            nv.data[type] = new Ext.data.Store({
-                model: nv.data.Business,
+            va.data[type] = new Ext.data.Store({
+                model: va.data.Business,
                 autoLoad: true,
                 proxy: {
                     type: 'scripttag',
@@ -53,11 +53,11 @@ nv = new Ext.Application({
             listeners: {
                 selectionchange: function (selectionModel, records) {
                     if (records[0]) {
-                        nv.viewport.setActiveItem(nv.detailTabs);
-                        nv.detailCardToolbar.setTitle(records[0].get('name'));
-                        nv.detailCard.update(records[0].data);
+                        va.viewport.setActiveItem(va.detailTabs);
+                        va.detailCardToolbar.setTitle(records[0].get('name'));
+                        va.detailCard.update(records[0].data);
 
-                        var map = nv.detailMap.map;
+                        var map = va.detailMap.map;
                         if (!map.marker) {
                             map.marker = new google.maps.Marker();
                             map.marker.setMap(map);
@@ -116,8 +116,8 @@ nv = new Ext.Application({
                 text: 'Back',
                 ui: 'back',
                 handler: function () {
-                    nv.viewport.setActiveItem(
-                        nv.listCard,
+                    va.viewport.setActiveItem(
+                        va.listCard,
                         {type: 'slide', direction: 'right'}
                     );
                 }
@@ -157,7 +157,7 @@ nv = new Ext.Application({
             }
         });
 
-        nv.viewport = new Ext.Panel({
+        va.viewport = new Ext.Panel({
             layout: 'card',
             fullscreen: true,
             cardSwitchAnimation: 'slide',
